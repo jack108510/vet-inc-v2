@@ -120,12 +120,12 @@
  transition: box-shadow 0.2s, transform 0.2s;
  }
  .kpi-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,.11); transform: translateY(-2px); }
- .kpi-card.amber-accent { border-top: 3px solid #f59e0b; }
+ .kpi-card.amber-accent { border-top: 3px solid var(--primary); }
  .kpi-label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
  .kpi-value { font-size: 2.9rem; font-weight: 800; line-height: 1.05; letter-spacing: -.02em; color: var(--text); }
  .kpi-value.green { color: var(--green); }
  .kpi-value.blue { color: var(--primary); }
- .kpi-value.amber { color: #f59e0b; }
+ .kpi-value.amber { color: var(--primary); }
  .kpi-sub { font-size: 0.8rem; color: var(--muted); margin-top: .2rem; }
 
  /* CHART CARD */
@@ -160,7 +160,7 @@
  tbody td.muted { color: var(--muted); }
  tbody td.green { color: var(--green); font-weight: 700; }
  tbody td.red { color: var(--red); font-weight: 700; }
- tbody td.amber { color: var(--amber); font-weight: 700; }
+ tbody td.amber { color: var(--primary); font-weight: 700; }
 
  /* PRICES TAB */
  .prices-topbar {
@@ -280,7 +280,7 @@
   </button>
   <button class="tab-btn" onclick="showTab('prices', this)">
     <span class="tab-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
-    Prices
+    Pricing Intelligence
   </button>
   <button class="tab-btn" onclick="showTab('settings', this)">
     <span class="tab-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span>
@@ -605,7 +605,7 @@ function agoBadge(dateStr) {
   const days = Math.floor((Date.now() - d.getTime()) / 86400000);
   let text, cls = '';
   if (days >= 730) { text = Math.floor(days / 365) + 'yr ago'; cls = 'red'; }
-  else if (days >= 365) { text = '1yr ago'; cls = 'amber'; }
+  else if (days >= 365) { text = '1yr ago'; cls = 'blue'; }
   else if (days >= 30) { text = Math.round(days / 30) + 'mo ago'; cls = ''; }
   else { text = days + 'd ago'; cls = ''; }
   return { text, cls };
