@@ -1212,50 +1212,46 @@
 .pi-sub{font-size:.78rem;color:#64748b;margin-bottom:1.1rem}
 .pi-stats{display:flex;gap:2rem;padding-bottom:1rem;flex-wrap:wrap}
 .pi-stat{display:flex;flex-direction:column;gap:.15rem}
-.pi-stat-val{font-size:1.45rem;font-weight:800;color:var(--primary);line-height:1}
-.pi-stat-val.green{color:#16a34a}
+.pi-stat-val{font-size:1.45rem;font-weight:800;color:var(--text);line-height:1}
 .pi-stat-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#94a3b8}
 .pi-stat-divider{width:1px;background:var(--border);align-self:stretch;margin:0 .25rem}
 /* ── Action Bar ──────────────────────────────────────── */
-.action-bar{display:flex;justify-content:space-between;align-items:center;padding:.9rem 2rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.75rem;background:#fafbfc}
+.action-bar{display:flex;justify-content:space-between;align-items:center;padding:.9rem 2rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.75rem;background:#fff}
 .action-bar-left{font-size:.85rem;font-weight:600;color:#64748b}
 .action-bar-left strong{color:var(--text);font-weight:800}
-.btn-accept-all{background:#16a34a;color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.4rem}
-.btn-accept-all:hover{background:#15803d;transform:translateY(-1px);box-shadow:0 4px 12px rgba(22,163,74,.25)}
+.btn-accept-all{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:9px 20px;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.4rem}
+.btn-accept-all:hover{background:#1d4ed8;box-shadow:0 4px 12px rgba(37,99,235,.3)}
 /* ── Filter Pills ────────────────────────────────────── */
-.filter-pills{display:flex;gap:.5rem;padding:.75rem 2rem;background:#fff;border-bottom:1px solid var(--border)}
-.filter-pill{background:none;border:1px solid var(--border);color:var(--muted);border-radius:999px;padding:5px 18px;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .15s}
-.filter-pill.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 2px 8px rgba(37,99,235,.18)}
+.filter-pills{display:flex;gap:.5rem;padding:.75rem 2rem;background:#fafbfc;border-bottom:1px solid var(--border)}
+.filter-pill{background:none;border:1px solid var(--border);color:#64748b;border-radius:999px;padding:5px 18px;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .15s}
+.filter-pill.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 /* ── Table ───────────────────────────────────────────── */
 .pi-table-wrap{flex:1;overflow-x:auto}
 .pi-table-wrap table{width:100%;border-collapse:collapse;min-width:640px}
-.pi-table-wrap thead th{background:#f8fafc;border-bottom:2px solid #e2e8f0;padding:10px 14px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#64748b;white-space:nowrap;position:sticky;top:0;z-index:1}
+.pi-table-wrap thead th{background:#f8fafc;border-bottom:2px solid #e2e8f0;padding:10px 16px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;white-space:nowrap;position:sticky;top:0;z-index:1}
 .pi-table-wrap thead th.num{text-align:right}
-.pi-table-wrap tbody td{padding:12px 14px;border-bottom:1px solid #f1f5f9;vertical-align:middle;font-size:.875rem;color:var(--text)}
+.pi-table-wrap tbody td{padding:14px 16px;border-bottom:1px solid #f1f5f9;vertical-align:middle;font-size:.875rem;color:var(--text)}
 .pi-table-wrap tbody td.num{text-align:right}
-.pi-table-wrap tbody tr{transition:background .1s}
-.pi-table-wrap tbody tr:hover{background:#f0f7ff}
-.pi-table-wrap tbody tr:nth-child(even){background:#fafbff}
-.pi-table-wrap tbody tr:nth-child(even):hover{background:#e8f0fe}
-.svc-name{font-weight:700;color:var(--text);margin-bottom:2px}
-.svc-code{font-size:.7rem;color:#94a3b8;font-weight:500}
-.price-current{font-weight:700;color:var(--text)}
-.price-suggested{font-weight:800;color:var(--primary)}
-.pct-badge{display:inline-flex;align-items:center;background:#f0fdf4;color:#16a34a;border-radius:6px;padding:3px 9px;font-size:.75rem;font-weight:800}
-.stale-tag{display:inline-flex;align-items:center;border-radius:6px;padding:3px 9px;font-size:.72rem;font-weight:700}
-.stale-tag.red{background:#fee2e2;color:#dc2626}.stale-tag.blue{background:#dbeafe;color:#1d4ed8}.stale-tag.ok{background:#f1f5f9;color:#64748b}
+.pi-table-wrap tbody tr:hover{background:#f8fafc}
+.svc-name{font-size:.875rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.svc-code{font-size:.72rem;color:#94a3b8;font-weight:400}
+.price-current{font-size:.875rem;font-weight:500;color:#475569}
+.price-suggested{font-size:.9rem;font-weight:700;color:var(--primary)}
+.pct-text{font-size:.82rem;font-weight:700;color:#1e293b}
+.stale-tag{display:inline-flex;align-items:center;border-radius:5px;padding:2px 8px;font-size:.72rem;font-weight:600}
+.stale-tag.overdue{background:#eff6ff;color:#2563eb}
+.stale-tag.ok{background:#f1f5f9;color:#64748b}
 /* ── Action Buttons ──────────────────────────────────── */
-.abtn-row{display:flex;gap:5px;justify-content:flex-end}
-.abtn{border:none;border-radius:7px;padding:6px 12px;font-size:.74rem;font-weight:700;cursor:pointer;transition:all .12s;white-space:nowrap}
-.abtn.accept{background:#f0fdf4;color:#15803d}.abtn.accept:hover{background:#dcfce7;transform:scale(1.03)}
-.abtn.edit{background:#eff6ff;color:#1d4ed8}.abtn.edit:hover{background:#dbeafe;transform:scale(1.03)}
-.abtn.skip{background:#f8fafc;color:#94a3b8}.abtn.skip:hover{background:#f1f5f9;color:#64748b}
+.abtn-row{display:flex;gap:4px;justify-content:flex-end}
+.abtn{border-radius:6px;padding:6px 13px;font-size:.75rem;font-weight:600;cursor:pointer;transition:background .12s;white-space:nowrap}
+.abtn.accept{background:var(--primary);color:#fff;border:none}.abtn.accept:hover{background:#1d4ed8}
+.abtn.edit{background:none;color:var(--primary);border:1px solid #dbeafe}.abtn.edit:hover{background:#eff6ff}
+.abtn.skip{background:none;color:#94a3b8;border:none;padding:6px 10px}.abtn.skip:hover{color:#475569}
 /* ── Empty & Inline Edit ─────────────────────────────── */
 .pi-empty{text-align:center;padding:3rem 1rem;color:#94a3b8}
-.pi-empty-icon{font-size:2rem;margin-bottom:.75rem}
-.pi-empty-msg{font-size:.9rem;font-weight:600}
-.inline-edit{display:flex;gap:6px;align-items:center}
-.inline-edit input{width:80px;border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:.82rem;font-weight:600;text-align:right}
+.pi-empty-msg{font-size:.88rem;font-weight:500}
+.inline-edit{display:flex;gap:6px;align-items:center;justify-content:flex-end}
+.inline-edit input{width:78px;border:1px solid #dbeafe;border-radius:6px;padding:5px 8px;font-size:.84rem;font-weight:600;text-align:right;color:var(--primary)}
 .inline-edit input:focus{outline:2px solid var(--primary);border-color:var(--primary)}
 </style>
 <div id="campaignsLoading" class="loading"><div class="spinner"></div> Loading prices...</div>
@@ -1271,7 +1267,7 @@
       </div>
       <div class="pi-stat-divider"></div>
       <div class="pi-stat">
-        <div class="pi-stat-val green" id="pi-stat-approved">--</div>
+        <div class="pi-stat-val" id="pi-stat-approved">--</div>
         <div class="pi-stat-label">Approved</div>
       </div>
       <div class="pi-stat-divider"></div>
@@ -1281,8 +1277,8 @@
       </div>
       <div class="pi-stat-divider"></div>
       <div class="pi-stat">
-        <div class="pi-stat-val green" id="pi-stat-uplift">--</div>
-        <div class="pi-stat-label">Monthly Uplift if All Accepted</div>
+        <div class="pi-stat-val" id="pi-stat-uplift">--</div>
+        <div class="pi-stat-label">Monthly Uplift if Accepted</div>
       </div>
     </div>
   </div>
@@ -1802,17 +1798,17 @@ function renderPriceTable() {
     const psd = r.price_set_date ? new Date(r.price_set_date) : null;
     const days = psd ? Math.round((Date.now() - psd) / 86400000) : null;
     const ageText = days === null ? '—' : days > 730 ? Math.round(days/365) + 'yr ago' : days > 365 ? '1yr ago' : days + 'd ago';
-    const ageCls = days !== null && days > 730 ? 'red' : days !== null && days > 365 ? 'blue' : 'ok';
+    const ageCls = days !== null && days > 365 ? 'overdue' : 'ok';
     const pct = parseFloat(r.price_increase_pct || 0).toFixed(1);
     const actionBtns = _priceFilter !== 'pending'
-      ? `<button class="abtn edit" onclick="patchRow(${r.id},'pending',this)">↩ Undo</button>`
-      : `<button class="abtn accept" onclick="patchRow(${r.id},'approved',this)">✓ Accept</button><button class="abtn edit" onclick="editRow(${r.id})">✎ Edit</button><button class="abtn skip" onclick="patchRow(${r.id},'dismissed',this)">✗ Skip</button>`;
+      ? `<button class="abtn edit" onclick="patchRow(${r.id},'pending',this)">Undo</button>`
+      : `<button class="abtn accept" onclick="patchRow(${r.id},'approved',this)">Accept</button><button class="abtn edit" onclick="editRow(${r.id})">Edit</button><button class="abtn skip" onclick="patchRow(${r.id},'dismissed',this)">Skip</button>`;
     return `<tr id="prow-${r.id}">
       <td><div class="svc-name">${escHtml(r.service_name || r.service_code)}</div><div class="svc-code">${r.service_code}</div></td>
       <td class="num"><span class="price-current">$${parseFloat(r.old_price||0).toFixed(2)}</span></td>
       <td class="num"><span class="stale-tag ${ageCls}">${ageText}</span></td>
       <td class="num" id="sug-${r.id}"><span class="price-suggested">$${parseFloat(r.suggested_price||0).toFixed(2)}</span></td>
-      <td class="num"><span class="pct-badge">+${pct}%</span></td>
+      <td class="num"><span class="pct-text">+${pct}%</span></td>
       <td class="num"><div class="abtn-row">${actionBtns}</div></td>
     </tr>`;
   }).join('');
