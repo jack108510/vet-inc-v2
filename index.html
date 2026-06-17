@@ -106,29 +106,27 @@
  }
  @keyframes spin { to { transform: rotate(360deg); } }
 
- /* KPI CARDS */
+ /* KPI CARDS — matches original v14 uplift-card style */
  .kpi-grid {
  display: grid;
- grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
- gap: 1rem; margin-bottom: 2rem;
+ grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+ gap: 1.25rem; margin-bottom: 1.25rem;
  }
  .kpi-card {
- background: var(--surface); border: 1px solid var(--border);
- border-radius: 14px; padding: 1.4rem 1.5rem;
- position: relative; overflow: hidden;
+ background: #fff; border: 1px solid var(--border);
+ border-radius: 16px; padding: 2rem 1.75rem;
+ display: flex; flex-direction: column; gap: 0.4rem;
+ box-shadow: 0 1px 6px rgba(37,99,235,.05);
  transition: box-shadow 0.2s, transform 0.2s;
  }
  .kpi-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,.11); transform: translateY(-2px); }
- .kpi-card::before {
- content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
- background: linear-gradient(90deg, var(--primary), var(--primary-light));
- }
- .kpi-card.amber-accent::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
- .kpi-label { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
- .kpi-value { font-size: 1.75rem; font-weight: 900; color: var(--text); line-height: 1.1; }
+ .kpi-card.amber-accent { border-top: 3px solid #f59e0b; }
+ .kpi-label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+ .kpi-value { font-size: 2.9rem; font-weight: 800; line-height: 1.05; letter-spacing: -.02em; color: var(--text); }
  .kpi-value.green { color: var(--green); }
- .kpi-value.amber { color: var(--amber); }
- .kpi-sub { font-size: 0.76rem; color: var(--muted); margin-top: 0.35rem; }
+ .kpi-value.blue { color: var(--primary); }
+ .kpi-value.amber { color: #f59e0b; }
+ .kpi-sub { font-size: 0.8rem; color: var(--muted); margin-top: .2rem; }
 
  /* CHART CARD */
  .chart-card {
