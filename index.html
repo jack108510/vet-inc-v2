@@ -1254,16 +1254,19 @@
 .inline-edit input{width:78px;border:1px solid #dbeafe;border-radius:6px;padding:5px 8px;font-size:.84rem;font-weight:600;text-align:right;color:var(--primary)}
 .inline-edit input:focus{outline:2px solid var(--primary);border-color:var(--primary)}
 </style>
-<div id="campaignsLoading" class="loading"><div class="spinner"></div> Loading prices...</div>
+<div id="campaignsLoading" class="loading"><div class="spinner"></div> Loading review...</div>
 <div id="campaignsContent" class="pi-page" style="display:none">
   <!-- Header -->
   <div class="pi-header">
-    <div class="pi-title">Pricing Intelligence</div>
-    <div class="pi-sub">Review CPI-adjusted suggestions and accept, edit, or defer each price change.</div>
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.25rem">
+      <div class="pi-title">Scheduled Income Review</div>
+      <span id="reviewDateBadge" style="background:#eff6ff;color:#2563eb;font-size:.7rem;font-weight:700;border-radius:6px;padding:3px 10px;letter-spacing:.04em"></span>
+    </div>
+    <div class="pi-sub">Your quarterly price check — services flagged for CPI drift or overdue review. Accept, edit, or defer each suggestion.</div>
     <div class="pi-stats">
       <div class="pi-stat">
         <div class="pi-stat-val" id="pi-stat-pending">--</div>
-        <div class="pi-stat-label">Pending</div>
+        <div class="pi-stat-label">Pending Review</div>
       </div>
       <div class="pi-stat-divider"></div>
       <div class="pi-stat">
@@ -1273,7 +1276,7 @@
       <div class="pi-stat-divider"></div>
       <div class="pi-stat">
         <div class="pi-stat-val" id="pi-stat-dismissed">--</div>
-        <div class="pi-stat-label">Dismissed</div>
+        <div class="pi-stat-label">Deferred</div>
       </div>
       <div class="pi-stat-divider"></div>
       <div class="pi-stat">
@@ -1284,17 +1287,17 @@
   </div>
   <!-- Action Bar -->
   <div class="action-bar">
-    <div class="action-bar-left"><strong id="pendingCount">--</strong> suggestions pending review</div>
+    <div class="action-bar-left"><strong id="pendingCount">--</strong> prices need your decision</div>
     <button class="btn-accept-all" onclick="acceptAll()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      Accept All Suggestions
+      Accept All &amp; Queue for Update
     </button>
   </div>
   <!-- Filter Pills -->
   <div class="filter-pills">
-    <button class="filter-pill active" onclick="setFilter('pending',this)">Pending</button>
+    <button class="filter-pill active" onclick="setFilter('pending',this)">Needs Review</button>
     <button class="filter-pill" onclick="setFilter('approved',this)">Approved</button>
-    <button class="filter-pill" onclick="setFilter('dismissed',this)">Dismissed</button>
+    <button class="filter-pill" onclick="setFilter('dismissed',this)">Deferred</button>
   </div>
   <!-- Table -->
   <div class="pi-table-wrap">
@@ -1767,6 +1770,9 @@ function _updatePIStats() {
 async function loadPriceActionTable() {
   if (_priceLoaded) return;
   _priceLoaded = true;
+  // Set review quarter badge
+  const badge = document.getElementById('reviewDateBadge');
+  if (badge) { const d = new Date(); badge.textContent = 'Q' + Math.ceil((d.getMonth()+1)/3) + ' ' + d.getFullYear() + ' Review'; }
   document.getElementById('campaignsLoading').style.display = 'flex';
   document.getElementById('campaignsContent').style.display = 'none';
   try {
@@ -1791,7 +1797,8 @@ function renderPriceTable() {
   _updatePIStats();
   const tbody = document.getElementById('priceActionTable');
   if (!rows.length) {
-    tbody.innerHTML = `<tr><td colspan="6"><div class="pi-empty"><div class="pi-empty-icon">${_priceFilter === 'approved' ? '✓' : _priceFilter === 'dismissed' ? '—' : '📋'}</div><div class="pi-empty-msg">No ${_priceFilter} items</div></div></td></tr>`;
+    const emptyLabel = _priceFilter === 'approved' ? 'approved' : _priceFilter === 'dismissed' ? 'deferred' : 'pending';
+    tbody.innerHTML = `<tr><td colspan="6"><div class="pi-empty"><div class="pi-empty-msg">No ${emptyLabel} items in this review</div></div></td></tr>`;
     return;
   }
   tbody.innerHTML = rows.map(r => {
@@ -1871,7 +1878,7 @@ async function acceptAll() {
     _priceRows.forEach(r => { if (r.status === 'pending') r.status = 'approved'; });
     renderPriceTable();
   } catch(e) { alert('Accept all failed: ' + e.message); }
-  if (btn) { btn.disabled=false; btn.textContent='✓ Accept All Suggestions'; }
+  if (btn) { btn.disabled=false; btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Accept All &amp; Queue for Update'; }
 }
 
 function setFilter(f, btn) {
