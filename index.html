@@ -470,7 +470,7 @@ async function loadDashboard() {
   try {
     const [queue, prices] = await Promise.all([
       sbFetch('std_approval_queue', 'select=*'),
-      sbFetch('std_service_prices', 'select=service_code,price_set_date,service_name,price')
+      sbFetch('std_service_prices', 'select=service_code,price_set_date,service_name,current_price')
     ]);
 
     queueRows = queue;
