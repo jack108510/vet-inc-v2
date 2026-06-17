@@ -1071,133 +1071,89 @@
  </button></nav><!--
  SECTION 1: Analytics & KPIs  Widget Board
  --><section id="tab-analytics" class="section active"><style>
-.uplift-board{padding:2rem;max-width:1100px;margin:0 auto}
-.uplift-header{margin-bottom:1.75rem}
-.uplift-title{font-size:1.2rem;font-weight:700;color:var(--text)}
-.uplift-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:1.25rem}
-@media(max-width:1100px){.uplift-cards{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:768px){.uplift-cards{grid-template-columns:1fr}}
-.uplift-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:2rem 1.75rem;display:flex;flex-direction:column;gap:0.4rem;box-shadow:0 1px 6px rgba(37,99,235,.05)}
-.uplift-card-label{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
-.uplift-card-value{font-size:2.9rem;font-weight:800;line-height:1.05;letter-spacing:-.02em}
-.uplift-card-value.ub-green{color:var(--green)}
-.uplift-card-value.ub-blue{color:var(--primary)}
-.uplift-card-sub{font-size:0.8rem;color:var(--muted);margin-top:.2rem}
-.uplift-chart-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.75rem;box-shadow:0 1px 6px rgba(37,99,235,.05);max-height:280px;overflow:hidden}
-.uplift-chart-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
-.uplift-chart-title{font-size:1rem;font-weight:700;color:var(--text)}
-.uplift-chart-sub{font-size:0.8rem;color:var(--muted);margin-top:.25rem}
-.uplift-chart-stats{display:flex;gap:1.5rem}
-.uplift-chart-stat{display:flex;flex-direction:column;align-items:flex-end}
-.uplift-chart-stat .stat-label{font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
-.uplift-chart-stat .stat-value{font-size:1.1rem;font-weight:700;color:var(--text)}
-.uplift-chart-stat .stat-value.trend-up{color:var(--green)}
-.uplift-chart-stat .stat-value.trend-down{color:var(--red)}
-.uplift-breakdown{background:#fff;border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.75rem;box-shadow:0 1px 6px rgba(37,99,235,.05)}
-.uplift-breakdown-title{font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:1rem}
-.uplift-breakdown-items{display:flex;flex-direction:column;gap:.6rem}
-.uplift-breakdown-item{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1rem;background:var(--bg);border-radius:8px}
-.uplift-breakdown-label{font-size:.88rem;color:var(--text);font-weight:500}
-.uplift-breakdown-value{font-size:.95rem;font-weight:700;color:var(--green)}
-
-.insight-inbox{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px;margin-bottom:14px;}
-.insight-item{border:1px solid #e2e8f0;border-radius:10px;padding:10px;margin-top:8px;background:#f8fafc;}
-.insight-title{font-weight:700;color:#1e3a8a;font-size:.9rem;}
-.insight-body{color:#475569;font-size:.85rem;margin-top:4px;}
-.insight-actions{margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;}
-.insight-detail{display:none;margin-top:8px;background:#fff;border:1px dashed #e2e8f0;border-radius:8px;padding:8px;font-size:.85rem;color:#475569;}
-.insight-item.open .insight-detail{display:block;}
-.insight-pill{display:inline-block;padding:.2rem .5rem;border-radius:999px;font-weight:700;font-size:.72rem;background:#eef2ff;color:#4338ca;}
-
-
-.campaign-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
-.campaign-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:14px;box-shadow:0 8px 20px rgba(15,23,42,.06);}
-.campaign-title{font-weight:800;color:#1e3a8a;}
-.campaign-meta{color:#64748b;font-size:.85rem;margin-top:4px;}
-.campaign-body{margin-top:8px;color:#475569;font-size:.9rem;}
-.campaign-metrics{display:flex;gap:12px;margin-top:10px;font-size:.85rem;color:#1e3a8a;font-weight:700;}
-
-
-.queue{display:grid;gap:8px;}
-.queue-item{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;font-size:.85rem;}
-.queue-actions{display:flex;gap:6px;}
-.queue-actions .approve{background:#22c55e;color:#fff;border:none;border-radius:6px;padding:4px 8px;font-size:.75rem;}
-.queue-actions .reject{background:#ef4444;color:#fff;border:none;border-radius:6px;padding:4px 8px;font-size:.75rem;}
-.campaign-btn{background:#2563eb;color:#fff;border:none;border-radius:8px;padding:6px 10px;font-size:.8rem;font-weight:700;}
-
+.dash-board{padding:2rem;max-width:1100px;margin:0 auto}
+.dash-top{display:grid;grid-template-columns:260px 1fr;gap:1.25rem;margin-bottom:1.5rem;align-items:start}
+@media(max-width:900px){.dash-top{grid-template-columns:1fr}}
+.score-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:2rem 1.75rem;box-shadow:0 1px 6px rgba(37,99,235,.05);display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.score-card-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);align-self:flex-start}
+.score-gauge-wrap{position:relative;width:160px;height:160px}
+.score-svg{width:160px;height:160px;transform:rotate(-90deg)}
+.score-number-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score-number{font-size:2.9rem;font-weight:800;color:var(--primary);line-height:1;letter-spacing:-.03em}
+.score-denom{font-size:.85rem;font-weight:600;color:var(--muted)}
+.score-sub{font-size:.8rem;color:var(--muted);text-align:center;max-width:180px}
+.dash-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media(max-width:600px){.dash-kpis{grid-template-columns:1fr}}
+.insights-section{margin-top:0}
+.insights-header{margin-bottom:1rem}
+.insights-title{font-size:1rem;font-weight:700;color:var(--text)}
+.insights-sub{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+.insight-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;box-shadow:0 1px 4px rgba(37,99,235,.04);margin-bottom:.75rem;transition:box-shadow .15s}
+.insight-card:hover{box-shadow:0 4px 16px rgba(37,99,235,.09)}
+.insight-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:.35rem}
+.insight-dot.red{background:#dc2626}.insight-dot.blue{background:var(--primary)}.insight-dot.green{background:#16a34a}.insight-dot.muted{background:#94a3b8}
+.insight-body{flex:1}
+.insight-head{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.insight-desc{font-size:.8rem;color:var(--muted);line-height:1.4}
+.insight-action{flex-shrink:0;margin-top:.1rem}
+.insight-btn{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:opacity .15s}
+.insight-btn:hover{opacity:.85}
+.insight-btn.ghost{background:none;border:1px solid var(--primary);color:var(--primary)}
 </style>
-<div class="uplift-board">
-  <div class="uplift-header"><span class="uplift-title">Key Indicators</span></div>
-  <div class="uplift-cards">
-    <div class="uplift-card">
-      <div class="uplift-card-label">Annual Revenue Opportunity</div>
-      <div class="uplift-card-value ub-green" id="ub-annual">--</div>
-      <div class="uplift-card-sub">Total Possible Uplift (Annual)</div>
-    </div>
-    <div class="uplift-card">
-      <div class="uplift-card-label">Typical Month</div>
-      <div class="uplift-card-value ub-blue" id="ub-baseline-month">--</div>
-      <div class="uplift-card-sub">Avg Revenue / Month (3mo)</div>
-    </div>
-    <div class="uplift-card">
-      <div class="uplift-card-label">Last 30 Days Extra Revenue</div>
-      <div class="uplift-card-value ub-green" id="ub-campaign-month">--</div>
-      <div class="uplift-card-sub">From Pricing Campaigns</div>
-    </div>
-  </div>
-  <div class="uplift-cards" style="margin-top:1rem">
-    <div class="uplift-card">
-      <div class="uplift-card-label">Total Extra Revenue</div>
-      <div class="uplift-card-value ub-green" id="ub-captured-total">--</div>
-      <div class="uplift-card-sub">Since Campaign Activation</div>
-    </div>
-    <div class="uplift-card">
-      <div class="uplift-card-label">Extra Revenue Yesterday</div>
-      <div class="uplift-card-value ub-green" id="ub-captured-yesterday">--</div>
-      <div class="uplift-card-sub">Last 24 Hours</div>
-    </div>
-  </div>
-  <!-- Avg Transaction Value Chart - Full Width -->
-  <div class="uplift-chart-card" style="margin-top:1.25rem">
-    <div class="uplift-chart-header">
-      <div>
-        <div class="uplift-chart-title">Average Transaction Value</div>
-        <div class="uplift-chart-sub">90-day rolling average per service line item</div>
-      </div>
-      <div class="uplift-chart-stats">
-        <div class="uplift-chart-stat">
-          <span class="stat-label">Current</span>
-          <span class="stat-value" id="chart-current">--</span>
-        </div>
-        <div class="uplift-chart-stat">
-          <span class="stat-label">30d Avg</span>
-          <span class="stat-value" id="chart-avg30">--</span>
-        </div>
-        <div class="uplift-chart-stat">
-          <span class="stat-label">Trend</span>
-          <span class="stat-value" id="chart-trend">--</span>
+<div class="dash-board">
+  <div class="dash-top">
+    <!-- Health Score Gauge -->
+    <div class="score-card">
+      <div class="score-card-label">Pricing Health Score</div>
+      <div class="score-gauge-wrap">
+        <svg viewBox="0 0 200 200" class="score-svg">
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#e2e8f0" stroke-width="14"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#2563eb" stroke-width="14"
+            stroke-dasharray="0 502" stroke-linecap="round" id="scoreArc"
+            style="transition:stroke-dasharray 1.2s cubic-bezier(.4,0,.2,1)"/>
+        </svg>
+        <div class="score-number-wrap">
+          <div class="score-number" id="healthScore">--</div>
+          <div class="score-denom">/100</div>
         </div>
       </div>
+      <div class="score-sub" id="healthScoreLabel">Loading data...</div>
     </div>
-    <div style="height:160px;margin-top:1rem">
-      <canvas id="avgTxnChart"></canvas>
+    <!-- KPI Cards -->
+    <div class="dash-kpis">
+      <div class="uplift-card">
+        <div class="uplift-card-label">Total Services</div>
+        <div class="uplift-card-value ub-blue" id="dk-total">--</div>
+        <div class="uplift-card-sub">In price list</div>
+      </div>
+      <div class="uplift-card">
+        <div class="uplift-card-label">Prices Stale</div>
+        <div class="uplift-card-value ub-blue" id="dk-stale">--</div>
+        <div class="uplift-card-sub">Not updated in 1+ yr</div>
+      </div>
+      <div class="uplift-card">
+        <div class="uplift-card-label">Pending Review</div>
+        <div class="uplift-card-value ub-green" id="dk-pending">--</div>
+        <div class="uplift-card-sub">Suggestions waiting</div>
+      </div>
+      <div class="uplift-card">
+        <div class="uplift-card-label">Annual Uplift</div>
+        <div class="uplift-card-value ub-green" id="dk-uplift">--</div>
+        <div class="uplift-card-sub">If all accepted</div>
+      </div>
     </div>
   </div>
-  <div class="uplift-breakdown" style="margin-top:1.25rem">
-    <div class="uplift-breakdown-title">Campaign Breakdown</div>
-    <div class="uplift-breakdown-items">
-      <div class="uplift-breakdown-item">
-        <span class="uplift-breakdown-label">Inflation Adjustment</span>
-        <span class="uplift-breakdown-value" id="ub-c1">--</span>
-      </div>
-      <div class="uplift-breakdown-item">
-        <span class="uplift-breakdown-label">.99 Pricing</span>
-        <span class="uplift-breakdown-value" id="ub-c2">--</span>
-      </div>
-      <div class="uplift-breakdown-item">
-        <span class="uplift-breakdown-label">Micro Margin</span>
-        <span class="uplift-breakdown-value" id="ub-c3">--</span>
-      </section><!-- SECTION 2: Campaigns
+  <!-- Insights Inbox -->
+  <div class="insights-section">
+    <div class="insights-header">
+      <div class="insights-title">Insights Inbox</div>
+      <div class="insights-sub">Recommended actions for your pricing strategy</div>
+    </div>
+    <div id="insightsInbox"><div class="loading" style="min-height:160px"><div class="spinner"></div></div></div>
+  </div>
+</div>
+</section>
+</section><!-- SECTION 2: Campaigns
  --><section id="tab-campaigns" class="section"><div id="campaignsLoading" class="loading"><div class="spinner"></div> Loading prices...
  </div><div id="campaignsContent" style="display:none"><style>
 .action-bar{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.75rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:.75rem}
@@ -1521,6 +1477,107 @@ function showTab(name, btn) {
 //  Supabase
 const SB_URL = 'https://rnqhhzatlxmyvccdvqkr.supabase.co';
 const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJucWhoemF0bHhteXZjY2R2cWtyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTAxNDk4NSwiZXhwIjoyMDkwNTkwOTg1fQ.Js6sEzcCbIkIx5QDtk4TDtSliUeD52e2H2D-Sxatg2w';
+
+// ── Dashboard (Key Indicators tab) ───────────────────────────────────────
+let _dashLoaded = false;
+
+async function loadDashboard() {
+  if (_dashLoaded) return;
+  _dashLoaded = true;
+  try {
+    const [prices, queue] = await Promise.all([
+      sbFetchAll('std_service_prices', 'select=service_code,price_set_date,current_price'),
+      sbFetchAll('std_approval_queue', 'select=id,service_code,old_price,suggested_price,price_increase_pct,status')
+    ]);
+
+    const now = Date.now();
+    const ONE_YR = 365 * 86400000;
+    const TWO_YR = 730 * 86400000;
+
+    let stale1yr = 0, stale2yr = 0, fresh = 0;
+    prices.forEach(p => {
+      if (!p.price_set_date) { stale2yr++; return; }
+      const age = now - new Date(p.price_set_date).getTime();
+      if (age > TWO_YR) stale2yr++;
+      else if (age > ONE_YR) stale1yr++;
+      else fresh++;
+    });
+    const total = prices.length;
+    const staleTotal = stale1yr + stale2yr;
+    const score = total > 0 ? Math.round((fresh / total) * 100) : 0;
+
+    const pending = queue.filter(r => r.status === 'pending');
+    const approved = queue.filter(r => r.status === 'approved');
+    const uplift = pending.reduce((s, r) => s + (parseFloat(r.suggested_price || 0) - parseFloat(r.old_price || 0)), 0) * 12;
+
+    // Animate health score
+    const arc = document.getElementById('scoreArc');
+    const circ = 2 * Math.PI * 80;
+    if (arc) {
+      setTimeout(() => {
+        arc.style.strokeDasharray = (score / 100 * circ).toFixed(1) + ' ' + circ.toFixed(1);
+        arc.style.stroke = score >= 75 ? '#16a34a' : score >= 50 ? '#2563eb' : '#2563eb';
+      }, 100);
+    }
+    const setEl = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    setEl('healthScore', score);
+    setEl('healthScoreLabel', score >= 75 ? 'Prices are mostly current' : score >= 50 ? 'Some prices need attention' : 'Many prices overdue for review');
+    setEl('dk-total', total.toLocaleString());
+    setEl('dk-stale', staleTotal > 0 ? staleTotal.toLocaleString() + ' (' + Math.round(staleTotal/total*100) + '%)' : '0');
+    setEl('dk-pending', pending.length.toLocaleString());
+    setEl('dk-uplift', uplift > 0 ? '$' + Math.round(uplift).toLocaleString() : '$0');
+
+    // Build insights
+    const insights = [];
+    if (stale2yr > 0) insights.push({
+      dot: 'red',
+      head: `${stale2yr} services haven't been updated in 2+ years`,
+      desc: `These prices may be significantly below market. Inflation since 2022 alone is ~15%.`,
+      btn: { label: 'Review Prices', tab: 'campaigns' }
+    });
+    if (stale1yr > 0) insights.push({
+      dot: 'blue',
+      head: `${stale1yr} services last updated 1–2 years ago`,
+      desc: `Consider a small annual adjustment to stay current with costs.`,
+      btn: { label: 'Review', tab: 'campaigns' }
+    });
+    if (pending.length > 0) insights.push({
+      dot: 'blue',
+      head: `${pending.length} price suggestions are waiting for your review`,
+      desc: `Approving all would recover an estimated $${Math.round(uplift/12).toLocaleString()}/month in additional revenue.`,
+      btn: { label: 'Go to Pricing Intelligence', tab: 'campaigns' }
+    });
+    if (approved.length > 0) insights.push({
+      dot: 'green',
+      head: `${approved.length} prices approved — ready for AVImark`,
+      desc: `DataHubVet will import these on the next sync cycle.`,
+      btn: null
+    });
+    if (fresh > 0) insights.push({
+      dot: 'green',
+      head: `${fresh} prices are current (updated within the last year)`,
+      desc: `Good work keeping these up to date.`,
+      btn: null
+    });
+    if (!insights.length) insights.push({ dot: 'muted', head: 'No data yet', desc: 'Load the pricing intelligence tab to generate suggestions.', btn: null });
+
+    document.getElementById('insightsInbox').innerHTML = insights.map(ins => `
+      <div class="insight-card">
+        <div class="insight-dot ${ins.dot}"></div>
+        <div class="insight-body">
+          <div class="insight-head">${ins.head}</div>
+          <div class="insight-desc">${ins.desc}</div>
+        </div>
+        ${ins.btn ? `<div class="insight-action"><button class="insight-btn" onclick="showTab('${ins.btn.tab}',document.querySelector('.tab-btn:nth-child(${ins.btn.tab === 'campaigns' ? 2 : 1})'))">${ins.btn.label} →</button></div>` : ''}
+      </div>`).join('');
+
+  } catch(e) {
+    document.getElementById('insightsInbox').innerHTML = `<div style="color:#dc2626;padding:1rem">Error: ${e.message}</div>`;
+  }
+}
+
+// Auto-load dashboard on page ready
+document.addEventListener('DOMContentLoaded', () => setTimeout(loadDashboard, 300));
 
 // ── Action Table (Pricing Intelligence tab) ──────────────────────────────
 let _priceRows = [], _priceFilter = 'pending', _priceLoaded = false;
