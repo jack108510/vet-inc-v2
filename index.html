@@ -1054,7 +1054,235 @@
 .modal-actions .secondary{background:#e2e8f0;color:#0f172a}
 .modal-actions .primary{background:var(--primary);color:#fff}
 
-</style></head><body>
+
+/* ── CLINIC MANAGER VIEW ─────────────────────────────────────── */
+body.clinic-mode { background: #f8fafc; }
+.clinic-shell {
+  min-height: 100vh;
+  background: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.clinic-topbar {
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clinic-topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #0f172a;
+}
+.clinic-topbar-logo .logo-icon-sm {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+}
+.clinic-topbar-clinic {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+.clinic-body {
+  max-width: 700px;
+  margin: 2.5rem auto;
+  padding: 0 1rem 4rem;
+}
+.clinic-score-section {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 8px rgba(0,0,0,.04);
+}
+.clinic-gauge-wrap { position: relative; width: 140px; height: 140px; margin: 0 auto 0.75rem; }
+.clinic-gauge-svg { width: 140px; height: 140px; transform: rotate(-90deg); }
+.clinic-gauge-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.clinic-score-num { font-size: 2.6rem; font-weight: 900; color: #2563eb; line-height: 1; }
+.clinic-score-denom { font-size: .72rem; color: #94a3b8; font-weight: 700; }
+.clinic-score-label { font-size: .8rem; font-weight: 700; color: #0f172a; margin-bottom: 2px; }
+.clinic-score-status { font-size: .75rem; color: #16a34a; font-weight: 600; }
+.clinic-managed-by { font-size: .72rem; color: #94a3b8; margin-top: 0.75rem; }
+.clinic-review-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 8px rgba(0,0,0,.04);
+}
+.clinic-review-header {
+  padding: 1.5rem 1.75rem 0;
+}
+.clinic-review-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+.clinic-review-sub {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+.clinic-info-banner {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 0.78rem;
+  color: #1d4ed8;
+  margin-bottom: 1.25rem;
+}
+.clinic-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.clinic-table th {
+  text-align: left;
+  padding: 0.6rem 1rem;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+.clinic-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #0f172a;
+  vertical-align: middle;
+}
+.clinic-table tr:last-child td { border-bottom: none; }
+.clinic-table tr:nth-child(even) td { background: #fafbfc; }
+.clinic-svc-name { font-weight: 600; }
+.clinic-price { color: #475569; }
+.clinic-pct { color: #2563eb; font-weight: 700; font-size: 0.78rem; }
+.clinic-pct.high { color: #dc2626; }
+.cv-accept {
+  background: #2563eb; color: #fff;
+  border: none; border-radius: 7px;
+  padding: 5px 14px; font-size: 0.75rem; font-weight: 700;
+  cursor: pointer; transition: background 0.15s;
+  margin-right: 4px;
+}
+.cv-accept:hover { background: #1d4ed8; }
+.cv-accept.accepted { background: #16a34a; }
+.cv-skip {
+  background: none; color: #94a3b8;
+  border: 1px solid #e2e8f0; border-radius: 7px;
+  padding: 5px 12px; font-size: 0.75rem; font-weight: 600;
+  cursor: pointer; transition: all 0.15s;
+}
+.cv-skip:hover { border-color: #94a3b8; color: #64748b; }
+.cv-skip.skipped { opacity: 0.4; }
+.clinic-action-bar {
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.cv-accept-all {
+  background: #2563eb; color: #fff;
+  border: none; border-radius: 10px;
+  padding: 12px 36px; font-size: 0.9rem; font-weight: 800;
+  cursor: pointer; transition: background 0.15s; width: 100%;
+}
+.cv-accept-all:hover { background: #1d4ed8; }
+.cv-accept-all:disabled { background: #93c5fd; cursor: default; }
+.cv-later {
+  background: none; border: none;
+  color: #94a3b8; font-size: 0.78rem; cursor: pointer;
+  text-decoration: underline;
+}
+.clinic-footer {
+  text-align: center;
+  font-size: 0.72rem;
+  color: #94a3b8;
+  margin-top: 1.5rem;
+}
+</style></style></head><body>
+<div id="clinicView" style="display:none">
+<div class="clinic-shell">
+  <div class="clinic-topbar">
+    <div class="clinic-topbar-logo">
+      <div class="logo-icon-sm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      Vet INC
+    </div>
+    <div class="clinic-topbar-clinic">Rosslyn Veterinary Clinic</div>
+  </div>
+  <div class="clinic-body">
+    <!-- Health Score -->
+    <div class="clinic-score-section">
+      <div class="clinic-gauge-wrap">
+        <svg class="clinic-gauge-svg" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="56" fill="none" stroke="#e2e8f0" stroke-width="10"/>
+          <circle id="cv-gauge-fill" cx="70" cy="70" r="56" fill="none" stroke="url(#cvGrad)" stroke-width="10"
+            stroke-linecap="round" stroke-dasharray="0 352" style="transition:stroke-dasharray 1.2s ease"/>
+          <defs>
+            <linearGradient id="cvGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#2563eb"/>
+              <stop offset="100%" stop-color="#60a5fa"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="clinic-gauge-inner">
+          <div class="clinic-score-num" id="cv-score-num">--</div>
+          <div class="clinic-score-denom">/100</div>
+        </div>
+      </div>
+      <div class="clinic-score-label">Pricing Health</div>
+      <div class="clinic-score-status" id="cv-score-status">Loading...</div>
+      <div class="clinic-managed-by">Managed by Vet Inc AI</div>
+    </div>
+
+    <!-- Review Card -->
+    <div class="clinic-review-card">
+      <div class="clinic-review-header">
+        <div class="clinic-review-title" id="cv-review-title">Q2 2026 Scheduled Review</div>
+        <div class="clinic-review-sub" id="cv-review-sub">Loading your review...</div>
+        <div class="clinic-info-banner">
+          These services were flagged because they haven't been updated in 3+ years or exceed our 5% adjustment threshold. Review and confirm below.
+        </div>
+      </div>
+      <table class="clinic-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Current</th>
+            <th>Suggested</th>
+            <th>Change</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cv-table-body">
+          <tr><td colspan="5" style="text-align:center;padding:2rem;color:#94a3b8">Loading...</td></tr>
+        </tbody>
+      </table>
+      <div class="clinic-action-bar">
+        <button class="cv-accept-all" id="cv-accept-all-btn" onclick="cvAcceptAll()">Accept All Changes</button>
+        <button class="cv-later">Review Later</button>
+      </div>
+    </div>
+    <div class="clinic-footer">Next automatic review: Q3 2026 &nbsp;&middot;&nbsp; Questions? Contact your Vet Inc advisor</div>
+  </div>
+</div>
+</div>
 <div id="loginGate" style="display:none">
   <div style="background:#111827;padding:24px;border-radius:14px;min-width:320px">
     <div style="font-size:1.1rem;font-weight:800;margin-bottom:8px">Vet INC Login</div>
@@ -6255,5 +6483,183 @@ function closeImplement(){
     setTimeout(function() { InsightsEngine.load(); }, 2000);
   });
 })();
+</script>
+
+<script>
+// ── CLINIC MANAGER MODE ───────────────────────────────────────────────────
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('role') !== 'clinic') return;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('clinic-mode');
+    // Hide all normal UI
+    ['header.header', 'nav.tab-nav', '#loginGate'].forEach(sel => {
+      const el = document.querySelector(sel);
+      if (el) el.style.display = 'none';
+    });
+    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+    // Show clinic view
+    document.getElementById('clinicView').style.display = 'block';
+    // Load data
+    setTimeout(loadClinicView, 200);
+  });
+})();
+
+let _cvFlagged = [];
+
+async function loadClinicView() {
+  try {
+    const headers = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
+
+    // Load queue (pending items)
+    let queue = [], page = 0, psize = 1000;
+    while (true) {
+      const r = await fetch(`${SB_URL}/rest/v1/std_approval_queue?select=*&status=eq.pending&order=id&limit=${psize}&offset=${page*psize}`, { headers });
+      const d = await r.json();
+      if (!Array.isArray(d) || d.length === 0) break;
+      queue = queue.concat(d);
+      if (d.length < psize) break;
+      page++;
+    }
+
+    // Load service prices for staleness
+    let prices = [], p2 = 0;
+    while (true) {
+      const r = await fetch(`${SB_URL}/rest/v1/std_service_prices?select=service_code,price_set_date,current_price&limit=1000&offset=${p2*1000}&order=service_code`, { headers });
+      const d = await r.json();
+      if (!Array.isArray(d) || d.length === 0) break;
+      prices = prices.concat(d);
+      if (d.length < 1000) break;
+      p2++;
+    }
+
+    // Build staleness map
+    const now = Date.now();
+    const staleMap = {};
+    prices.forEach(p => {
+      const days = p.price_set_date ? Math.floor((now - new Date(p.price_set_date)) / 86400000) : 9999;
+      staleMap[p.service_code] = days;
+    });
+
+    // Identify flagged vs auto-approved
+    const flagged = [], autoApproved = [];
+    queue.forEach(row => {
+      const pct = row.old_price > 0 ? ((row.suggested_price - row.old_price) / row.old_price) * 100 : 0;
+      const days = staleMap[row.service_code] || 0;
+      const priceDown = row.suggested_price < row.old_price;
+      if (priceDown || pct > 5 || days > 1095) {
+        flagged.push({ ...row, pct, days });
+      } else {
+        autoApproved.push(row);
+      }
+    });
+
+    _cvFlagged = flagged;
+
+    // Health score (simple: based on % stale)
+    const totalSvcs = prices.length || 1;
+    const staleCount = prices.filter(p => {
+      const d = staleMap[p.service_code] || 0;
+      return d > 730;
+    }).length;
+    const score = Math.round(Math.max(20, 100 - (staleCount / totalSvcs) * 80));
+    renderCVScore(score);
+
+    // Update quarter badge
+    const d2 = new Date();
+    const qLabel = 'Q' + Math.ceil((d2.getMonth()+1)/3) + ' ' + d2.getFullYear();
+    document.getElementById('cv-review-title').textContent = qLabel + ' Scheduled Review';
+    document.getElementById('cv-review-sub').textContent =
+      `${flagged.length} service${flagged.length !== 1 ? 's' : ''} flagged for your review · ${autoApproved.length} auto-approved`;
+
+    const btn = document.getElementById('cv-accept-all-btn');
+    if (btn) btn.textContent = `Accept All ${flagged.length} Changes`;
+
+    renderCVTable(flagged);
+
+  } catch(e) {
+    document.getElementById('cv-table-body').innerHTML = `<tr><td colspan="5" style="color:#dc2626;padding:1.5rem;text-align:center">Error loading data: ${e.message}</td></tr>`;
+  }
+}
+
+function renderCVScore(score) {
+  const el = document.getElementById('cv-score-num');
+  if (el) el.textContent = score;
+  const status = document.getElementById('cv-score-status');
+  if (status) {
+    status.textContent = score >= 80 ? 'Good Standing' : score >= 60 ? 'Needs Attention' : 'Requires Recovery';
+    status.style.color = score >= 80 ? '#16a34a' : score >= 60 ? '#ca8a04' : '#dc2626';
+  }
+  const circ = 2 * Math.PI * 56;
+  const fill = document.getElementById('cv-gauge-fill');
+  if (fill) fill.setAttribute('stroke-dasharray', `${(score/100)*circ} ${circ}`);
+}
+
+function renderCVTable(rows) {
+  const tbody = document.getElementById('cv-table-body');
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:2rem;color:#16a34a;font-weight:600">&#10003; All prices are up to date — nothing to review this quarter.</td></tr>`;
+    const btn = document.getElementById('cv-accept-all-btn');
+    if (btn) { btn.textContent = 'Nothing to Review'; btn.disabled = true; }
+    return;
+  }
+  tbody.innerHTML = rows.map((r, i) => {
+    const cur = parseFloat(r.old_price || 0);
+    const sug = parseFloat(r.suggested_price || 0);
+    const pct = r.pct || 0;
+    const pctClass = Math.abs(pct) > 10 ? 'clinic-pct high' : 'clinic-pct';
+    const pctStr = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+    return `<tr id="cv-row-${r.id}">
+      <td class="clinic-svc-name">${escHtml(r.service_description || r.service_code || '')}</td>
+      <td class="clinic-price">$${cur.toFixed(2)}</td>
+      <td class="clinic-price" style="color:#0f172a;font-weight:600">$${sug.toFixed(2)}</td>
+      <td><span class="${pctClass}">${pctStr}</span></td>
+      <td>
+        <button class="cv-accept" id="cv-acc-${r.id}" onclick="cvAcceptRow(${r.id}, this)">Accept</button>
+        <button class="cv-skip" id="cv-skip-${r.id}" onclick="cvSkipRow(${r.id}, this)">Skip</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+async function cvAcceptRow(id, btn) {
+  btn.textContent = '...'; btn.disabled = true;
+  try {
+    await patchRow(id, 'approved', btn);
+    btn.textContent = '✓'; btn.classList.add('accepted'); btn.disabled = true;
+    const skip = document.getElementById('cv-skip-' + id);
+    if (skip) { skip.disabled = true; skip.classList.add('skipped'); }
+  } catch(e) { btn.textContent = 'Error'; btn.disabled = false; }
+}
+
+async function cvSkipRow(id, btn) {
+  btn.textContent = '...'; btn.disabled = true;
+  try {
+    await patchRow(id, 'dismissed', btn);
+    btn.classList.add('skipped'); btn.textContent = 'Skipped'; btn.disabled = true;
+    const acc = document.getElementById('cv-acc-' + id);
+    if (acc) { acc.disabled = true; acc.style.opacity = '0.4'; }
+  } catch(e) { btn.textContent = 'Error'; btn.disabled = false; }
+}
+
+async function cvAcceptAll() {
+  const btn = document.getElementById('cv-accept-all-btn');
+  btn.textContent = 'Processing...'; btn.disabled = true;
+  let done = 0;
+  for (const r of _cvFlagged) {
+    try {
+      await patchRow(r.id, 'approved', null);
+      const accBtn = document.getElementById('cv-acc-' + r.id);
+      if (accBtn) { accBtn.textContent = '✓'; accBtn.classList.add('accepted'); accBtn.disabled = true; }
+      const skipBtn = document.getElementById('cv-skip-' + r.id);
+      if (skipBtn) { skipBtn.disabled = true; skipBtn.classList.add('skipped'); }
+      done++;
+      btn.textContent = `Processing... ${done}/${_cvFlagged.length}`;
+    } catch(e) {}
+  }
+  btn.textContent = `✓ All ${done} Changes Accepted`;
+  btn.style.background = '#16a34a';
+}
 </script>
 </body></html>
